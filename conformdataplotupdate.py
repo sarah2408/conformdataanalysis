@@ -205,14 +205,15 @@ par_guess = (50.0,3000.0)
 
 #---------------Wheel Speed vs Abutment Stress Graph Plot----------------
 
-#fig = plt.figure()
-ax = fig.add_subplot(122)
+fig = plt.figure()
+ax = plt.subplot2grid((2,2),(0,0),rowspan=2,colspan=2)
 
 
-#colour = data['ConformAbutTemp1DateTime']
+colour = data['abut_temp_c']
 
-plot1 = ax.scatter(data['wheel_speed'], Abut_Stress, linewidth = 0, marker='o',s=10, c='r', cmap='jet')
-#fig.colorbar(plot1,cmap='jet',norm=Normalize(clip=False),label = 'Time (s)')
+plot2 = ax.scatter(data['wheel_speed'], Abut_Stress, linewidth = 0, marker='o',s=10, c=colour)
+
+fig.colorbar(plot2,cmap=cm.CMRmap, norm=Normalize(clip=False),label = 'Abutment Temperature')
 
 
 #ax.plot(xdata,(par_guess[0]/xdata)*exp(-par_guess[1]*xdata))
